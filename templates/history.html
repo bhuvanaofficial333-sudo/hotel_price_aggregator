@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Search History</title>
+</head>
+
+<body>
+
+<h2>Your Search History</h2>
+
+<table border="1">
+
+<tr>
+<th>Location</th>
+<th>Checkin</th>
+<th>Checkout</th>
+<th>Guests</th>
+</tr>
+
+{% for h in history %}
+
+<tr>
+<td>{{h[0]}}</td>
+<td>{{h[1]}}</td>
+<td>{{h[2]}}</td>
+<td>{{h[3]}}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/">Back</a>
+
+</body>
+</html>

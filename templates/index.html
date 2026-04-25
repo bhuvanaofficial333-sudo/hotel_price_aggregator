@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel Price Aggregator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            width: 100%;
+            background: #667eea;
+            color: white;
+            padding: 15px 40px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            background: white;
+            color: #667eea;
+            padding: 6px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            background: #f1f1f1;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin: 40px auto;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div><strong>Hotel Price Aggregator</strong></div>
+    <div>
+        Welcome, {{ session['user'] }}
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Hotel Price Comparison</h2>
+
+    <form action="/search" method="post">
+
+        <label>Location:</label>
+        <select name="location" required>
+            <option value="">-- Select City --</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Bangalore">Bangalore</option>
+        </select>
+
+        <label>Check-in Date:</label>
+        <input type="date" name="checkin" required>
+
+        <label>Check-out Date:</label>
+        <input type="date" name="checkout" required>
+
+        <label>Number of Guests:</label>
+        <input type="number" name="guests" min="1" required>
+
+        <label>Minimum Rating:</label>
+        <select name="min_rating">
+            <option value="0">All Ratings</option>
+            <option value="4">4★ and above</option>
+            <option value="4.5">4.5★ and above</option>
+        </select>
+
+        <label>Sort By:</label>
+        <select name="sort_option">
+            <option value="price_low">Price: Low to High</option>
+            <option value="price_high">Price: High to Low</option>
+            <option value="rating_high">Rating: High to Low</option>
+        </select>
+
+        <button type="submit">Search Hotels</button>
+
+    </form>
+</div>
+
+</body>
+</html>
